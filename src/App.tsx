@@ -1,17 +1,19 @@
+
 import './App.css'
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
 import { Home } from './components/Home'
 import Login from './components/Login'
+// @ts-ignore
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import { useRef } from 'react';
 
 
 
 function App() {
-  const tawkMessengerRef = useRef();
+  const tawkMessengerRef = useRef<TawkMessengerReact | null>(null)
 
   const handleMinimize = () => {
-      tawkMessengerRef.current.minimize();
+      tawkMessengerRef.current?.minimize();
   };
   return (
     <div className=" max-w-full mx-auto bg-black "> 
