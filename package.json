@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.0",
     "flutterwave-react-v3": "^1.3.0",

@@ -1,6 +1,11 @@
 import {BsWhatsapp, BsLinkedin, BsTwitter, BsGithub, } from 'react-icons/bs'
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
+    const [state, handleSubmit] = useForm("xjvqzroj");
+    if(state.succeeded){
+        return <p>Your state was succesful</p>
+    }
     return(
         <div className="px-7 md:px-10 my-10 bg-[#252530]" id="contact">            
             {/* text an Icols section */}
@@ -24,19 +29,70 @@ const Contact = () => {
                 {/* form section */}
                 <div className='md:w-1/2 '>
                     <p className=' mt-16 text-white text-2xl mb-6 '>Send email:</p>
+                    <form onSubmit={handleSubmit} className="md:w-3/4 w-full">
+                            <label className="text-white text-2xl mb-2" htmlFor="name">
+                                Your Name
+                            </label>
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                className="text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 w-full rounded"
+                                placeholder="Your Name"
+                            />
+                            <ValidationError
+                                prefix="Name"
+                                field="name"
+                                errors={state.errors}
+                            />
 
-                    <form>
-                        <input className='text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 md:w-3/4 w-full rounded' type="text" name="name" id="name" placeholder='Name' />
-                        <input className=' text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 md:w-3/4 w-full rounded' type="email" name="email" id="email" placeholder='Email address' />
-                        <input className='text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 md:w-3/4 w-full rounded' type="phone" name="phone" id="phone" placeholder='Phone number' />
+                            <label className="text-white text-2xl mb-2" htmlFor="email">
+                                Email Address
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                className="text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 w-full rounded"
+                                placeholder="Your Email Address"
+                            />
+                            <ValidationError
+                                prefix="Email"
+                                field="email"
+                                errors={state.errors}
+                            />
 
-                        <textarea 
-                        className=' text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 md:w-3/4 w-full rounded'
-                        name="message"
-                        id="message"
-                        placeholder='Enter your message here'></textarea>
-                        <button className=' block bg-purple-500 text-white rounded hover:bg-white hover:text-purple-500 transition-all duration-500 py-2 px-4'>Send</button>
-                    </form>
+                            <label className="text-white text-2xl mb-2" htmlFor="phone">
+                                Phone Number
+                            </label>
+                            <input
+                                id="phone"
+                                type="tel"
+                                name="phone"
+                                className="text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 w-full rounded"
+                                placeholder="Your Phone Number"
+                            />
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                className="text-white outline-purple-700 my-2 bg-[#f5f5f5] bg-opacity-10 py-3 px-3 w-full rounded"
+                                placeholder="Your Message"
+                            />
+                            <ValidationError
+                                prefix="Message"
+                                field="message"
+                                errors={state.errors}
+                            />
+
+                            <button
+                                type="submit"
+                                disabled={state.submitting}
+                                className="block bg-purple-500 text-white rounded hover:bg-white hover-text-purple-500 transition-all duration-500 py-2 px-4"
+                            >
+                                Send
+                            </button>
+                        </form>
                 </div>
             </div>
         </div>

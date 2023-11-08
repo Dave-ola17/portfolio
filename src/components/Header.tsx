@@ -8,7 +8,6 @@ export const Header = () => {
         {name: 'Home', href: '/home'},
         {name: 'Projects', href: '/projects'},
         {name: 'About us', href: '/about'},
-        {name: 'login', href: '/signup'},
     ]
     let [open, setOpen ] = useState(false)
   return (
@@ -16,10 +15,10 @@ export const Header = () => {
         <div className='md:flex items-center justify-between py-4 md:px-10 px-7 '>
             {/* logo section  */}
             <div className=' font-bold text-2xl cursor-pointer flex items-center gap-1 '>
-                <span className=' text-purple-950 hover:text-white '>David Olayiwola</span>
+                <span className=' style-font text-white '>David Olayiwola</span>
             </div>
             {/* menu icons */}
-            <div onClick={() => setOpen(!open)} className=' text-white md:hidden absolute w-7 h-7 right-8 top-6 cursor-pointer '>
+            <div onClick={() => setOpen(!open)} className=' mt-5 md:mt-0 text-white md:hidden absolute w-7 h-7 right-8 top-6 cursor-pointer '>
                 {
                     open ? <AiOutlineClose /> : <ImMenu />
                 }
